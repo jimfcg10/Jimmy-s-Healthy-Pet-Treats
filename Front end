@@ -1,0 +1,31 @@
+// src/App.js
+import { useState } from "react";
+
+const products = [
+  { id: 1, name: "Vitality and joint support, medium", price: 12 },
+  { id: 2, name: "Vitality and joint support, large", price: 15 },
+];
+
+function App() {
+  const [cart, setCart] = useState([]);
+
+  const addToCart = (product) => {
+    setCart([...cart, product]);
+  };
+
+  return (
+    <div>
+      <h1>Pet Treats Shop</h1>
+      {products.map((product) => (
+        <div key={product.id}>
+          <h2>{product.name}</h2>
+          <p>${product.price}</p>
+          <button onClick={() => addToCart(product)}>Add to Cart</button>
+        </div>
+      ))}
+      <h2>Cart ({cart.length} items)</h2>
+    </div>
+  );
+}
+
+export default App;
